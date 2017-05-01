@@ -12,6 +12,8 @@
 namespace houdunwang\unit;
 
 use PHPUnit\Framework\TestCase;
+use Session;
+use Response;
 
 /**
  * 单元测试基础类
@@ -21,5 +23,33 @@ use PHPUnit\Framework\TestCase;
  */
 class UnitBaseTestCase extends TestCase
 {
+    use Route;
 
+    /**
+     * 分配SESSION数据
+     *
+     * @param $data
+     *
+     * @return $this
+     */
+    protected function withSession($data)
+    {
+        Session::batch($data);
+
+        return $this;
+    }
+
+    /**
+     * 检测状态码
+     *
+     * @param $code
+     */
+    protected function assertStatus($code)
+    {
+        $this->assertEquals($code, $this->getCode());
+    }
+
+    function __call($name, $arguments)
+    {
+    }
 }
