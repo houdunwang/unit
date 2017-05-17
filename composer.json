@@ -1,7 +1,6 @@
 {
   "name": "houdunwang/unit",
   "description": "phpunit单元测试服务",
-  "type": "project",
   "keywords": [
     "单元测试",
     "后盾网",
